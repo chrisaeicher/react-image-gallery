@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ImageCard from './components/ImageCard'
+import SearchBox from "./components/SearchBox";
 
 function App() {
   const [images, setImages] = useState([])
@@ -15,13 +16,17 @@ function App() {
     })
     .catch(err => console.log(err))
   })
-
+  const searchImages = (word) => {
+    setTerm(word)
+  }
   return (
-    <div className="mx-auto">
+    <div className="container mx-auto">
+      <SearchBox search={searchImages}/>
+      {!isLoading && images.length === 0 && <h1 className="text-6xl text-center mx-auto mt-32">No images found.</h1>}
       {isLoading ? <h1 className="text-6xl text-center mx-auto mt-32">Loading...</h1>
-      : <div className="grid grid-cols-3 gap-4">
+      : <div className="grid ml-12 sm:ml-0 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {images.map(image => {
-          return <ImageCard key={image.id} image={image}/>
+          return <ImageCard search={searchImages} key={image.id} image={image}/>
         })}
       </div>}
     </div>
