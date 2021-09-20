@@ -24,7 +24,7 @@ function App() {
       <SearchBox search={searchImages}/>
       {!isLoading && images.length === 0 && <h1 className="text-6xl text-center mx-auto mt-32">No images found.</h1>}
       {isLoading ? <h1 className="text-6xl text-center mt-32">Loading...</h1>
-      : <div className="grid ml-2 mr-2 md:ml-12 md:mr-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-4">
+      : <div className="grid ml-2 mr-2 md:ml-12 md:mr-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {images.map(image => {
           return <ImageCard search={searchImages} key={image.id} image={image}/>
         })}
