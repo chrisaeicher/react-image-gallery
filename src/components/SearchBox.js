@@ -5,7 +5,7 @@ import { useState } from 'react'
 const SearchBox = ({ search }) => {
     const [text, setText] = useState("")
     return (
-        <div className="max-w-sm rounded overflow-hidden my-10 mx-auto">
+        <div className="ml-2 mr-2 md:ml-12 rounded overflow-hidden my-10 mx-auto">
             <form onSubmit={(e) => {
                 e.preventDefault()
                 search(text)
